@@ -1,0 +1,10 @@
+steps:
+  - task: TerraformTask@5
+    inputs:
+      provider: 'azurerm'
+      command: 'init'
+      workingDirectory: '$(System.DefaultWorkingDirectory)/env/dev'
+      backendServiceArm: 'output_connection'
+      backendAzureRmStorageAccountName: 'backendstgdemo'
+      backendAzureRmContainerName: 'statefile'
+      backendAzureRmKey: 'dev.tfstate'
