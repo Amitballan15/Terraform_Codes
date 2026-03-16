@@ -44,4 +44,4 @@ jobs:
       run: terraform plan
     - name: Terraform Apply
       working-directory: ./resource-group-basic-code
-      run: terraform apply
+      run: terraform apply -auto-approve
