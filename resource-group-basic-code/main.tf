@@ -19,7 +19,7 @@ resource "azurerm_resource_group" "test" {
 }
 
 resource "azurerm_storage_account" "teststg" {
-  name                     = "storageaccountname"
+  name                     = "demostgforballan"
   resource_group_name      = azurerm_resource_group.test.name
   location                 = azurerm_resource_group.test.location
   account_tier             = "Standard"
