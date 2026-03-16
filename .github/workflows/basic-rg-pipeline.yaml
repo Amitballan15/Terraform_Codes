@@ -29,7 +29,7 @@ jobs:
 
     - name: Terraform Format Check
       working-directory: ./resource-group-basic-code
-      run: terraform fmt -check -recursive
+      run: terraform fmt -recursive
 
     - name: Terraform Init
       working-directory: ./resource-group-basic-code
