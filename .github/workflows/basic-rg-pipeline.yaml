@@ -45,3 +45,8 @@ jobs:
     - name: Terraform Apply
       working-directory: ./resource-group-basic-code
       run: terraform apply -auto-approve
+
+    - name: Terraform Destroy
+      working-directory: ./resource-group-basic-code
+      run: terraform destroy -auto-approve
+     
