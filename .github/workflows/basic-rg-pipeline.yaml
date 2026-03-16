@@ -1,0 +1,44 @@
+name: basic rg creation pipeline
+
+on:
+  push:
+    paths:
+      - 'resource-group-basic-code/**'
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  terraform:
+    name: terraform init fmt validate plan
+    runs-on: ubuntu-latest
+
+    env:
+      ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
+      ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
+      ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
+      ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
+
+    steps:
+
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v3
+
+    - name: Terraform Format Check
+      working-directory: ./resource-group-basic-code
+      run: terraform fmt -check -recursive
+
+    - name: Terraform Init
+      working-directory: ./resource-group-basic-code
+      run: terraform init
+
+    - name: Terraform Validate
+      working-directory: ./resource-group-basic-code
+      run: terraform validate
+
+    - name: Terraform Plan
+      working-directory: ./resource-group-basic-code
+      run: terraform plan
