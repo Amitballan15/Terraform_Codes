@@ -42,3 +42,6 @@ jobs:
     - name: Terraform Plan
       working-directory: ./resource-group-basic-code
       run: terraform plan
+    - name: Terraform Apply
+      working-directory: ./resource-group-basic-code
+      run: terraform apply
